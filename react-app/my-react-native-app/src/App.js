@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-import PizzaTranslator from './PizzaTranslator';
+import ListaDinamica from './ScrollView';
 
 function App() {
   return (
-    <PizzaTranslator/>
+    <ListaDinamica/>
   );
 }
 
