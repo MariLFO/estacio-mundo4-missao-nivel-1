@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, TextInput } from 'react-native';
+import { Text, View, FlatList, TextInput, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ListagemFornecedores = () => {
@@ -30,6 +30,7 @@ const ListagemFornecedores = () => {
 
   const renderItem = ({ item }) => (
     <View>
+      {item.image && <Image source={{ uri: item.image }} style={{ width: 200, height: 200 }} />}
       <Text>{item.nome}</Text>
       <Text>{item.endereco}</Text>
       <Text>{item.contato}</Text>
