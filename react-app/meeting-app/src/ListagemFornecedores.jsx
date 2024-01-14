@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, TextInput, Image } from 'react-native';
+import { Text, View, FlatList, TextInput, Image, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ListagemFornecedores = () => {
@@ -28,19 +28,20 @@ const ListagemFornecedores = () => {
     );
   }, [search, fornecedores]);
 
-  const renderItem = ({ item }) => (
-    <View>
-      {item.image && <Image source={{ uri: item.image }} style={{ width: 200, height: 200 }} />}
-      <Text>{item.nome}</Text>
-      <Text>{item.endereco}</Text>
-      <Text>{item.contato}</Text>
-      <Text>{item.categorias}</Text>
+  const renderItem = ({ item, index }) => (
+    <View style={[styles.itemContainer, {backgroundColor: index % 2 === 0 ? '#ddd' : '#eee'}]}>
+      <Image source={item.image ? { uri: item.image } : require('./logo.png')} style={styles.image} />
+      <Text style={styles.itemText}>{item.nome}</Text>
+      <Text style={styles.itemText}>{item.endereco}</Text>
+      <Text style={styles.itemText}>{item.contato}</Text>
+      <Text style={styles.itemText}>{item.categorias}</Text>
     </View>
   );
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
+        style={styles.input}
         value={search}
         onChangeText={setSearch}
         placeholder="Pesquisar fornecedores..."
@@ -53,5 +54,33 @@ const ListagemFornecedores = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: '#F5FCFF',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    paddingLeft: 10,
+    marginBottom: 10,
+  },
+  itemContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingBottom: 10,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+  },
+  itemText: {
+    flex: 1,
+  },
+});
 
 export default ListagemFornecedores;

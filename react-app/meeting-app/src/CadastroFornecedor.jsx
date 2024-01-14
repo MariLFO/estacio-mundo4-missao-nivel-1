@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View, Button, Image, Platform } from 'react-native';
+import { Text, Button, Image, TextInput, View, Platform, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 let ImagePicker;
@@ -51,28 +51,40 @@ const CadastroFornecedor = () => {
   };
 
   return (
-    <View>
-      <Text>Nome:</Text>
-      <TextInput
-        value={fornecedor.nome}
-        onChangeText={(value) => handleInputChange('nome', value)}
-      />
-      <Text>Endereço:</Text>
-      <TextInput
-        value={fornecedor.endereco}
-        onChangeText={(value) => handleInputChange('endereco', value)}
-      />
-      <Text>Contato:</Text>
-      <TextInput
-        value={fornecedor.contato}
-        onChangeText={(value) => handleInputChange('contato', value)}
-      />
-      <Text>Categorias:</Text>
-      <TextInput
-        value={fornecedor.categorias}
-        onChangeText={(value) => handleInputChange('categorias', value)}
-      />
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+    <View style={styles.container}>
+      <View style={styles.inputRow}>
+        <Text style={styles.label}>Nome:</Text>
+        <TextInput
+          style={styles.input}
+          value={fornecedor.nome}
+          onChangeText={(value) => handleInputChange('nome', value)}
+        />
+      </View>
+      <View style={styles.inputRow}>
+        <Text style={styles.label}>Endereço:</Text>
+        <TextInput
+          style={styles.input}
+          value={fornecedor.endereco}
+          onChangeText={(value) => handleInputChange('endereco', value)}
+        />
+      </View>
+      <View style={styles.inputRow}>
+        <Text style={styles.label}>Contato:</Text>
+        <TextInput
+          style={styles.input}
+          value={fornecedor.contato}
+          onChangeText={(value) => handleInputChange('contato', value)}
+        />
+      </View>
+      <View style={styles.inputRow}>
+        <Text style={styles.label}>Categorias:</Text>
+        <TextInput
+          style={styles.input}
+          value={fornecedor.categorias}
+          onChangeText={(value) => handleInputChange('categorias', value)}
+        />
+      </View>
+      {image && <Image source={{ uri: image }} style={styles.image} />}
       {Platform.OS === 'web' ? (
         <input type="file" accept="image/*" onChange={handleSelectImage} />
       ) : (
@@ -82,5 +94,35 @@ const CadastroFornecedor = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: '#F5FCFF',
+  },
+  inputRow: {
+    flexDirection: 'row',
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  label: {
+    width: 100,
+    marginRight: 10,
+    fontSize: 16,
+  },
+  input: {
+    flex: 1,
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    paddingLeft: 10,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
+  },
+});
 
 export default CadastroFornecedor;
