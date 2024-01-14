@@ -4,6 +4,7 @@ import ListaDinamica from './ListaDinamica';
 import FlatListBasics from './FlatListBasics';
 import SectionListBasics from './SectionListBasics';
 import DisplayAnImage from './DisplayAnImage';
+import DisplayAnImageWithStyle from './DisplayAnImageWithStyle';
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
     // Microatividade 4.2:
     //<SectionListBasics/>
     // Microatividade 5.1:
-    <DisplayAnImage/>
+    //<DisplayAnImage/>
+    // Microatividade 5.2:
+    <DisplayAnImageWithStyle/>
   );
 }
 
