@@ -19,8 +19,13 @@ const CadastroFornecedor = () => {
 
   const handleSubmit = async () => {
     try {
-      const jsonValue = JSON.stringify(fornecedor)
-      await AsyncStorage.setItem('@fornecedor', jsonValue)
+      const existingSuppliers = await AsyncStorage.getItem('@fornecedor');
+      let newSuppliers = JSON.parse(existingSuppliers);
+      if (!newSuppliers || !Array.isArray(newSuppliers)) {
+        newSuppliers = [];
+      }
+      newSuppliers.push(fornecedor);
+      await AsyncStorage.setItem('@fornecedor', JSON.stringify(newSuppliers));
     } catch (e) {
       console.log(e);
     }
