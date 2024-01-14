@@ -1,9 +1,9 @@
 import './App.css';
-import Cafe from './Cat';
+import CadastroFornecedor from './CadastroFornecedor';
 
 function App() {
   return (
-    <Cafe />
+    <CadastroFornecedor />
   );
 }
 
