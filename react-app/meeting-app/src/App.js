@@ -1,9 +1,9 @@
 import './App.css';
-import Cat from './Cat';
+import Cafe from './Cat';
 
 function App() {
   return (
-    <Cat />
+    <Cafe />
   );
 }
 
